@@ -1,0 +1,28 @@
+name: medflock-hospital
+services:
+  node:
+    image: ${MEDFLOCK_IMAGE:?Set tested image digest}
+    restart: unless-stopped
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp", "/app/runtime:uid=10001,gid=10001", "/home/medflock/.flwr:uid=10001,gid=10001"]
+    command:
+      - flower-supernode
+      - --superlink
+      - ${FLOWER_COORDINATOR:?Set private coordinator host:9092}
+      - --root-certificates
+      - /run/medflock/ca.pem
+      - --auth-supernode-private-key
+      - /run/medflock/node.key
+      - --node-config
+      - 'data-dir="/app/node-data"'
+      - --host
+      - 127.0.0.1
+    volumes:
+      - ${NODE_DATA_DIRECTORY:?Set local prepared bundle}:/app/node-data:ro
+      - ${NODE_IDENTITY_DIRECTORY:?Set local identity directory}:/run/medflock:ro
+    cpus: 1
+    mem_limit: 2g
+    healthcheck: {disable: true}

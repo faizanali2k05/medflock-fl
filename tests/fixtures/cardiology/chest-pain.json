@@ -1,0 +1,21 @@
+{
+  "id": "MF-CARD-001",
+  "synthetic": true,
+  "purpose": "Development regression used during prompt tuning; not independent clinical validation",
+  "prompt": "A 59-year-old male presents to the emergency department with chest pain.\n\nPatient ID: MF-CARD-001\nAge: 59 years\nSex: Male\nWeight: 83 kg\n\nChief complaint: Central chest pressure for 90 minutes, radiating to the left arm and jaw. Pain severity 7/10. Associated sweating, nausea and mild breathlessness. Pain started while walking and continued despite resting.\n\nMedical history: Type 2 diabetes for 11 years, hypertension for 8 years, dyslipidemia. Smokes 10 cigarettes daily. Father suffered myocardial infarction at age 54. No previous diagnosed coronary artery disease.\n\nMedications: Metformin 1000 mg twice daily, losartan 50 mg daily, atorvastatin 20 mg nightly (irregular adherence). Took sildenafil 50 mg approximately 8 hours ago.\n\nAllergies: No known drug allergies. No history of active bleeding or peptic ulcer bleeding. Not taking anticoagulants.\n\nVital signs: BP 146/88 mmHg, HR 106 bpm, RR 21/min, SpO2 97% on room air, Temp 36.8 C.\n\nPhysical exam: Alert, anxious and sweating. Heart sounds normal, regular tachycardia. Lungs clear. No peripheral edema. No chest wall tenderness. Peripheral pulses symmetrical.\n\nECG: Sinus tachycardia, approximately 1 mm horizontal ST depression in V4-V6, no ST elevation.\n\nLabs: hs-troponin I 11 ng/L (lab upper reference limit 19 ng/L), creatinine 1.4 mg/dL, eGFR 55 mL/min/1.73 m2, glucose 218 mg/dL, hemoglobin 13.9 g/dL, platelets 242000/uL, potassium 4.4 mmol/L.\n\nThe first troponin sample was obtained about 90 minutes after symptom onset. The patient continues to experience chest discomfort.",
+  "required_patterns": [
+    "59",
+    "sildenafil.{0,20}50\\s*mg",
+    "8\\s*(?:hours?|h)\\b",
+    "ST\\s*depression",
+    "V4\\s*[-–]\\s*V6",
+    "troponin.{0,20}11\\s*ng/L",
+    "19\\s*ng/L",
+    "90\\s*(?:minutes?|min)\\b",
+    "(?:ongoing|continues|persistent|persists)"
+  ],
+  "forbidden_patterns": [
+    "11\\s*ng/mL",
+    "19\\s*ng/mL"
+  ]
+}

@@ -1,0 +1,16 @@
+deploy:staging:
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: [""]
+  stage: deploy
+  environment:
+    name: staging
+  resource_group: staging
+  script:
+    - test -n "$KUBE_CONTEXT"
+    - kubectl config use-context "$KUBE_CONTEXT"
+    - kubectl -n medflock set image deployment/medflock api=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA worker=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - kubectl -n medflock rollout status deployment/medflock --timeout=180s
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $KUBE_CONTEXT'
+      when: manual

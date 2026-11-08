@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MedFlock · Research workbench</title>
+    <style>
+      :root {
+        font-family:
+          Inter,
+          Segoe UI,
+          sans-serif;
+        color: #193128;
+        background: #f5f7f4;
+        font-size: 15px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      header {
+        background: #123b30;
+        color: white;
+        padding: 26px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      h1 {
+        margin: 0;
+        font-size: 27px;
+        letter-spacing: -1px;
+      }
+      header p {
+        color: #bad3c6;
+        margin: 5px 0 0;
+      }
+      .tag {
+        font-size: 12px;
+        border: 1px solid #689282;
+        border-radius: 24px;
+        padding: 8px 13px;
+      }
+      main {
+        max-width: 1260px;
+        margin: auto;
+        padding: 36px 30px;
+      }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 11px;
+        color: #537969;
+        font-weight: 700;
+      }
+      h2 {
+        font-size: 30px;
+        font-weight: 600;
+        margin: 10px 0;
+      }
+      p {
+        line-height: 1.6;
+        color: #607369;
+      }
+      .intro {
+        max-width: 760px;
+        margin-bottom: 28px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 330px 1fr;
+        gap: 22px;
+      }
+      .card {
+        border: 1px solid #dce4dd;
+        border-radius: 16px;
+        background: #fff;
+        padding: 24px;
+        margin-bottom: 22px;
+      }
+      h3 {
+        font-size: 17px;
+        margin: 0 0 18px;
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin: 16px 0 7px;
+      }
+      select,
+      input,
+      button {
+        font: inherit;
+      }
+      select,
+      input {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #cdd9d0;
+        border-radius: 8px;
+        background: #fafcf9;
+        color: #193128;
+      }
+      button {
+        cursor: pointer;
+        border: 0;
+        border-radius: 8px;
+        background: #1a644b;
+        color: #fff;
+        padding: 12px 18px;
+        font-weight: 600;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: wait;
+      }
+      button.secondary {
+        color: #285d47;
+        background: #e9f1eb;
+      }
+      form button {
+        width: 100%;
+        margin-top: 22px;
+      }
+      .small {
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .notice {
+        border-left: 3px solid #cead65;
+        padding: 10px 14px;
+        background: #fbf7ec;
+        color: #766139;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .stat {
+        padding: 18px;
+        background: #f1f6f1;
+        border-radius: 10px;
+      }
+      .stat strong {
+        display: block;
+        font-size: 28px;
+        font-weight: 500;
+        margin: 8px 0;
+      }
+      .stat span {
+        font-size: 12px;
+        color: #62776b;
+      }
+      .badge {
+        display: inline-block;
+        padding: 5px 9px;
+        border-radius: 6px;
+        background: #edf3eb;
+        color: #4c6f53;
+        font-size: 11px;
+      }
+      .run {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+        border-bottom: 1px solid #eef1ec;
+        gap: 10px;
+      }
+      .run button {
+        font-size: 12px;
+        padding: 7px 10px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      td,
+      th {
+        text-align: left;
+        padding: 12px 8px;
+        border-bottom: 1px solid #e9eeea;
+      }
+      th {
+        color: #6b7c70;
+        font-weight: 500;
+      }
+      .barrow {
+        display: grid;
+        grid-template-columns: 60px 1fr 80px;
+        gap: 12px;
+        margin: 12px 0;
+        align-items: center;
+        font-size: 12px;
+      }
+      .track {
+        height: 12px;
+        background: #e4eee6;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .fill {
+        background: #3d876a;
+        height: 100%;
+      }
+      .muted {
+        color: #6b7c70;
+      }
+      .error {
+        color: #a33c32;
+        white-space: pre-wrap;
+      }
+      #chart {
+        width: 100%;
+        height: 140px;
+      }
+      .hidden {
+        display: none;
+      }
+      footer {
+        text-align: center;
+        padding: 28px;
+        color: #77887c;
+        font-size: 12px;
+      }
+      a {
+        color: #1a644b;
+      }
+      code {
+        font-size: 11px;
+        overflow-wrap: anywhere;
+      }
+      .steps {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .step {
+        font-size: 12px;
+        padding: 8px 10px;
+        background: #edf3ee;
+        border-radius: 7px;
+      }
+      @media (max-width: 850px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        main {
+          padding: 24px 16px;
+        }
+        .stats {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .stat {
+          padding: 10px;
+        }
+        .stat strong {
+          font-size: 23px;
+        }
+        header {
+          padding: 22px;
+        }
+        .tag {
+          display: none;
+        }
+        h2 {
+          font-size: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>MedFlock<span style="color: #95bba2"> / FL</span></h1>
+        <p class="small">Cardiology research workbench</p>
+      </div>
+      <span class="tag">RESEARCH PREVIEW · LOCAL WORKSPACE</span>
+    </header>
+    <main>
+      <div class="intro">
+        <div class="eyebrow">Learn together. Keep data local.</div>
+        <h2>Make federation measurable.</h2>
+        <p>
+          Compare centralized, local-only, and federated learning on one
+          reproducible heart-failure outcome benchmark. Explore how simulated
+          client differences affect the result.
+        </p>
+      </div>
+      <div class="grid">
+        <aside>
+          <section class="card">
+            <h3>Configure an experiment</h3>
+            <span id="dataset" class="badge">Checking dataset…</span>
+            <form id="experiment">
+              <label for="clients">Simulated clients</label
+              ><select id="clients">
+                <option>3</option>
+                <option>5</option>
+                <option>10</option>
+              </select>
+              <label for="partition">Data distribution</label
+              ><select id="partition">
+                <option value="iid">Random partition · IID</option>
+                <option value="label_skew">Outcome skew · non-IID</option>
+                <option value="feature_skew">Age skew · non-IID</option>
+              </select>
+              <label for="rounds">Training rounds</label
+              ><input
+                id="rounds"
+                type="number"
+                min="1"
+                max="100"
+                value="20"
+                required
+              />
+              <label for="attack">Attack simulation</label
+              ><select id="attack">
+                <option value="none">No attacker</option>
+                <option value="sign_flip">One sign-flipping client</option>
+              </select>
+              <label for="defense">Update handling</label
+              ><select id="defense">
+                <option value="none">Standard FedAvg</option>
+                <option value="clip">Clip update norms</option>
+              </select>
+              <p class="small muted">
+                Attack and clipping experiments require 5–10 clients. Clipping
+                limits magnitude; it does not identify a malicious hospital.
+              </p>
+              <button id="launch" type="submit">Run experiment ↗</button>
+              <p id="error" class="small error" role="alert"></p>
+            </form>
+          </section>
+          <section class="card">
+            <h3>Scope & readiness</h3>
+            <p class="small">
+              One historical Pakistani cohort. Clients are simulated partitions,
+              not independent hospitals.
+            </p>
+            <div class="notice small">
+              Research scores only. Clinical review is pending. Medication
+              recommendations are <strong>not assessed</strong>.
+            </div>
+            <div class="steps">
+              <span class="step">✓ Paired baselines</span
+              ><span class="step">✓ Versioned contract</span
+              ><span class="step">○ Clinical review</span
+              ><span class="step">○ LLM distillation</span>
+            </div>
+            <p class="small"><a href="/docs">Explore API</a></p>
+          </section>
+        </aside>
+        <div>
+          <section class="card" id="empty">
+            <div class="eyebrow">Your experiment starts here</div>
+            <h2>Evidence before claims.</h2>
+            <p>
+              Run an experiment to see held-out performance, client composition,
+              and training progress. Every result records the dataset and
+              contract fingerprints.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <span>Task</span><strong>90 days</strong
+                ><span>Observed mortality</span>
+              </div>
+              <div class="stat">
+                <span>Inputs</span><strong>11</strong
+                ><span>Baseline features</span>
+              </div>
+              <div class="stat">
+                <span>Baselines</span><strong>3</strong
+                ><span>Shared holdout</span>
+              </div>
+            </div>
+          </section>
+          <section class="card hidden" id="result">
+            <div
+              style="display: flex; justify-content: space-between; gap: 12px"
+            >
+              <h3>Experiment results</h3>
+              <span class="badge">SIMULATED FEDERATION</span>
+            </div>
+            <div class="stats" id="stats"></div>
+            <p class="small muted">
+              AUROC and average precision: higher is better. Brier score: lower
+              is better. These are development results without external clinical
+              validation.
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Training approach</th>
+                  <th>AUROC</th>
+                  <th>Avg. precision</th>
+                  <th>Brier</th>
+                </tr>
+              </thead>
+              <tbody id="metrics"></tbody>
+            </table>
+            <h3 style="margin-top: 24px">Client composition</h3>
+            <p class="small muted">
+              Dark green shows positive outcome examples within each training
+              partition.
+            </p>
+            <div id="partitions"></div>
+            <h3 style="margin-top: 24px">Training Brier score</h3>
+            <svg
+              id="chart"
+              viewBox="0 0 600 140"
+              role="img"
+              aria-label="Training Brier score by round"
+            ></svg>
+            <p class="small muted" id="provenance"></p>
+            <button class="secondary" id="download">
+              Download result JSON
+            </button>
+          </section>
+          <section class="card">
+            <h3>Experiment history</h3>
+            <div id="runs"><p class="small muted">No runs yet.</p></div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer>
+      MedFlock · Research preview · No patient identifiers or prescriptions are
+      needed for this workbench.
+    </footer>
+    <script>
+      const $ = (id) => document.getElementById(id);
+      let selected = null,
+        pending = null,
+        latest = [];
+      async function api(path, options) {
+        const r = await fetch(path, options);
+        if (!r.ok) {
+          const e = await r.json();
+          throw Error(
+            typeof e.detail === "string" ? e.detail : JSON.stringify(e.detail),
+          );
+        }
+        return r.json();
+      }
+      function element(tag, text, cls) {
+        const e = document.createElement(tag);
+        e.textContent = text;
+        if (cls) e.className = cls;
+        return e;
+      }
+      function show(result) {
+        selected = result;
+        $("empty").classList.add("hidden");
+        $("result").classList.remove("hidden");
+        $("stats").replaceChildren();
+        for (const [name, value, sub] of [
+          [
+            "Eligible records",
+            result.cohort.eligible_rows,
+            `${result.cohort.early_censored_excluded} early-censored excluded`,
+          ],
+          [
+            "Holdout records",
+            result.cohort.test_count,
+            "Same split across baselines",
+          ],
+          ["Clients", result.config.clients, result.config.partition],
+        ]) {
+          const d = element("div", "", "stat");
+          d.append(
+            element("span", name),
+            element("strong", value),
+            element("span", sub),
+          );
+          $("stats").append(d);
+        }
+        $("metrics").replaceChildren();
+        const rows = [
+          ["Centralized", result.centralized],
+          ["Federated · FedAvg", result.fedavg],
+          ...result.local_only.map((x, i) => [`Local-only · ${i + 1}`, x]),
+        ];
+        for (const [label, m] of rows) {
+          const tr = element("tr", "");
+          for (const v of [
+            label,
+            ...["auroc", "auprc", "brier"].map((k) =>
+              m[k] === null ? "N/A" : m[k].toFixed(3),
+            ),
+          ])
+            tr.append(element("td", v));
+          $("metrics").append(tr);
+        }
+        $("partitions").replaceChildren();
+        for (const p of result.partitions) {
+          const row = element("div", "", "barrow"),
+            track = element("div", "", "track"),
+            fill = element("div", "", "fill");
+          fill.style.width = `${(p.events / p.count) * 100}%`;
+          track.append(fill);
+          row.append(
+            element("span", `Client ${p.node}`),
+            track,
+            element("span", `${p.events} / ${p.count}`),
+          );
+          $("partitions").append(row);
+        }
+        const points = result.history.map(
+          (h, i) =>
+            `${15 + (i / Math.max(1, result.history.length - 1)) * 570},${125 - Math.max(0, Math.min(1, h.train_brier)) * 110}`,
+        );
+        const ns = "http://www.w3.org/2000/svg";
+        $("chart").replaceChildren();
+        const line = document.createElementNS(ns, "polyline");
+        line.setAttribute("points", points.join(" "));
+        line.setAttribute("fill", "none");
+        line.setAttribute("stroke", "#3d876a");
+        line.setAttribute("stroke-width", "3");
+        $("chart").append(line);
+        const label = document.createElementNS(ns, "text");
+        label.setAttribute("x", "15");
+        label.setAttribute("y", "22");
+        label.setAttribute("fill", "#607369");
+        label.setAttribute("font-size", "12");
+        label.textContent = `Round 1: ${result.history[0].train_brier.toFixed(4)} → Round ${result.history.length}: ${result.history.at(-1).train_brier.toFixed(4)} · scale 0–1`;
+        $("chart").append(label);
+        $("provenance").textContent =
+          `Run ${result.run_id} · Seed ${result.config.seed} · Dataset ${result.cohort.source_sha256.slice(0, 12)} · Contract ${result.contract_hash.slice(0, 12)}. ${result.limitations.join(". ")}.`;
+      }
+      async function refresh() {
+        try {
+          latest = await api("/api/runs");
+          $("runs").replaceChildren();
+          if (!latest.length)
+            $("runs").append(element("p", "No runs yet.", "small muted"));
+          for (const run of latest) {
+            const row = element("div", "", "run"),
+              info = element("div", "");
+            info.append(
+              element(
+                "div",
+                `${run.config.clients} clients · ${run.config.partition}`,
+              ),
+              element(
+                "div",
+                `${new Date(run.created_at).toLocaleString()} · ${run.status}`,
+                "small muted",
+              ),
+            );
+            row.append(info);
+            if (run.result) {
+              const button = element("button", "View");
+              button.onclick = () => show(run.result);
+              row.append(button);
+            }
+            if (run.error)
+              info.append(element("div", run.error, "small error"));
+            $("runs").append(row);
+          }
+          if (pending) {
+            const run = latest.find((r) => r.id === pending);
+            if (run?.result) {
+              show(run.result);
+              pending = null;
+            } else if (["failed", "aborted"].includes(run?.status)) {
+              pending = null;
+            }
+          } else if (!selected && latest.some((r) => r.result))
+            show(latest.find((r) => r.result).result);
+        } catch (e) {
+          $("error").textContent = e.message;
+        }
+      }
+      $("experiment").onsubmit = async (e) => {
+        e.preventDefault();
+        $("launch").disabled = true;
+        $("error").textContent = "";
+        try {
+          const run = await api("/api/runs", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Idempotency-Key": crypto.randomUUID(),
+            },
+            body: JSON.stringify({
+              clients: Number($("clients").value),
+              rounds: Number($("rounds").value),
+              partition: $("partition").value,
+              attack: $("attack").value,
+              defense: $("defense").value,
+            }),
+          });
+          selected = null;
+          pending = run.id;
+          await refresh();
+        } catch (e) {
+          $("error").textContent = e.message;
+        } finally {
+          $("launch").disabled = false;
+        }
+      };
+      $("download").onclick = () => {
+        if (!selected) return;
+        const url = URL.createObjectURL(
+          new Blob([JSON.stringify(selected, null, 2)], {
+            type: "application/json",
+          }),
+        );
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `medflock-${selected.run_id}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+      api("/api/status")
+        .then((s) => {
+          $("dataset").textContent = s.dataset_available
+            ? "Dataset available · UCI 519"
+            : "Dataset not prepared";
+          $("launch").disabled = !s.dataset_available;
+        })
+        .catch((e) => {
+          $("error").textContent = e.message;
+        });
+      refresh();
+      setInterval(refresh, 2500);
+    </script>
+  </body>
+</html>

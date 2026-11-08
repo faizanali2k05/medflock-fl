@@ -1,0 +1,24 @@
+wheel:
+  image: python:3.11-slim
+  stage: package
+  needs: [frontend, backend]
+  script:
+    - pip install uv==0.11.33
+    - uv build
+  artifacts:
+    paths: [dist/]
+    expire_in: 30 days
+container:
+  image:
+    name: moby/buildkit:rootless
+    entrypoint: [""]
+  stage: package
+  variables:
+    BUILDKITD_FLAGS: --oci-worker-no-process-sandbox
+  before_script:
+    - mkdir -p ~/.docker
+    - printf '{"auths":{"%s":{"username":"%s","password":"%s"}}}' "$CI_REGISTRY" "$CI_REGISTRY_USER" "$CI_REGISTRY_PASSWORD" > ~/.docker/config.json
+  script:
+    - buildctl-daemonless.sh build --frontend dockerfile.v0 --local context=. --local dockerfile=. --output type=image,name=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA,push=true
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

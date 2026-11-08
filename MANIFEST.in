@@ -1,0 +1,4 @@
+include README.md CONTRIBUTING.md flwr.toml uv.lock Dockerfile compose.yaml
+recursive-include tests *.py
+recursive-include scripts *.py
+recursive-include docs *.md *.json

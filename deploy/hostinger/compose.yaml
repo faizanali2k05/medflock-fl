@@ -1,0 +1,59 @@
+name: medflock-pilot
+x-app: &app
+  image: ${MEDFLOCK_IMAGE:?Set an immutable tested registry image}
+  restart: unless-stopped
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  tmpfs: ["/tmp", "/app/runtime:uid=10001,gid=10001"]
+  environment: &environment
+    MEDFLOCK_ENV: production
+    MEDFLOCK_EMBEDDED_WORKER: "false"
+    MEDFLOCK_AUTH_REQUIRED: "true"
+    MEDFLOCK_API_KEY: ${MEDFLOCK_API_KEY:?Required}
+    MEDFLOCK_DATABASE_URL: postgresql+psycopg://medflock:${MEDFLOCK_DB_PASSWORD:?Required}@database:5432/medflock
+    MEDFLOCK_ALLOWED_HOSTS: ${MEDFLOCK_ALLOWED_HOSTS:-localhost,127.0.0.1}
+    MEDFLOCK_ARTIFACTS: /app/artifacts
+    MEDFLOCK_OIDC_ISSUER: ${MEDFLOCK_OIDC_ISSUER:-}
+    MEDFLOCK_OIDC_AUDIENCE: ${MEDFLOCK_OIDC_AUDIENCE:-medflock}
+  volumes: [artifacts:/app/artifacts]
+  networks: [application]
+  depends_on:
+    database: {condition: service_healthy}
+services:
+  api:
+    <<: *app
+    ports: ["127.0.0.1:${MEDFLOCK_PORT:-18088}:8088"]
+    cpus: 0.5
+    mem_limit: 768m
+  worker:
+    <<: *app
+    command: [python, -m, medflock.worker]
+    cpus: 1
+    mem_limit: 2g
+    stop_grace_period: 75s
+    healthcheck: {disable: true}
+  database:
+    image: postgres:17.6-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: medflock
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Required}
+      MEDFLOCK_DB_PASSWORD: ${MEDFLOCK_DB_PASSWORD:?Required}
+    volumes:
+      - database:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/10-medflock.sh:ro
+    networks: [application]
+    cpus: 0.5
+    mem_limit: 1g
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U postgres -d medflock]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+networks:
+  application:
+volumes:
+  artifacts:
+  database:

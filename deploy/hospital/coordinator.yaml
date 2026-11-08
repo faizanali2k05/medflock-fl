@@ -1,0 +1,37 @@
+name: medflock-federation
+services:
+  coordinator:
+    image: ${MEDFLOCK_IMAGE:?Set tested image digest}
+    restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp", "/home/medflock/.flwr:uid=10001,gid=10001"]
+    ports:
+      - "127.0.0.1:18000:8000"
+      - "${FLOWER_PRIVATE_BIND:?Set VPN/private interface IP}:9092:9092"
+    command:
+      - flower-superlink
+      - --host
+      - 0.0.0.0
+      - --fleet-api-address
+      - 0.0.0.0:9092
+      - --ssl-certfile
+      - /run/medflock/server.pem
+      - --ssl-keyfile
+      - /run/medflock/server.key
+      - --ssl-ca-certfile
+      - /run/medflock/ca.pem
+      - --enable-supernode-auth
+      - --database
+      - /app/runtime/flower.db
+      - --disable-runtime-dependency-installation
+    volumes:
+      - flower-state:/app/runtime
+      - ${COORDINATOR_IDENTITY_DIRECTORY:?Set certificate directory}:/run/medflock:ro
+      - ${SERVER_SPEC_DIRECTORY:?Set directory containing server.json}:/app/specification
+    cpus: 1
+    mem_limit: 2g
+    healthcheck: {disable: true}
+volumes:
+  flower-state:

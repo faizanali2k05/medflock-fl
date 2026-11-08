@@ -1,0 +1,88 @@
+{
+  "id": "heart-failure-90d",
+  "version": 1,
+  "features": [
+    {
+      "name": "age",
+      "unit": "years",
+      "kind": "continuous",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "anaemia",
+      "unit": "source binary 0/1",
+      "kind": "binary",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "creatinine_phosphokinase",
+      "unit": "mcg/L as stated by UCI",
+      "kind": "continuous",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "diabetes",
+      "unit": "source binary 0/1",
+      "kind": "binary",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "ejection_fraction",
+      "unit": "percent",
+      "kind": "continuous",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "high_blood_pressure",
+      "unit": "source binary 0/1",
+      "kind": "binary",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "platelets",
+      "unit": "kiloplatelets/mL",
+      "kind": "continuous",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "serum_creatinine",
+      "unit": "mg/dL",
+      "kind": "continuous",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "serum_sodium",
+      "unit": "mEq/L",
+      "kind": "continuous",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "sex",
+      "unit": "source binary 0/1; mapping must be verified for new sources",
+      "kind": "binary",
+      "minimum": null,
+      "maximum": null
+    },
+    {
+      "name": "smoking",
+      "unit": "source binary 0/1",
+      "kind": "binary",
+      "minimum": null,
+      "maximum": null
+    }
+  ],
+  "target": "DEATH_EVENT",
+  "outcome": "time_horizon",
+  "followup": "time",
+  "horizon": 90,
+  "group_column": null
+}

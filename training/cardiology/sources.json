@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ACC_HFREF_2024",
+    "url": "https://www.acc.org/latest-in-cardiology/ten-points-to-remember/2024/03/06/19/22/2024-acc-expert-consensus-hfref",
+    "role": "candidate clinical reference",
+    "adoption": "pending cardiologist and Pakistan-local review",
+    "training_reuse": "not established; link is not redistribution permission"
+  },
+  {
+    "id": "NICE_NG106_2025",
+    "url": "https://www.nice.org.uk/guidance/ng106/chapter/recommendations/",
+    "role": "candidate monitoring and review reference",
+    "adoption": "pending cardiologist and Pakistan-local review",
+    "training_reuse": "not established; do not bulk-copy text"
+  },
+  {
+    "id": "PROJECT_SCOPE_V1",
+    "url": null,
+    "role": "project engineering policy, not clinical evidence",
+    "adoption": "research scope",
+    "training_reuse": "project-authored"
+  }
+]

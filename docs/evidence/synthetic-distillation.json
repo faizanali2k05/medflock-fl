@@ -1,0 +1,25 @@
+{
+  "initial_validation_loss": 2.6086857318878174,
+  "selected_validation_loss": 2.604757070541382,
+  "validation_improved": true,
+  "history": [
+    {
+      "epoch": 1,
+      "training_loss": 2.6224718391895294,
+      "validation_loss": 2.604757070541382
+    },
+    {
+      "epoch": 2,
+      "training_loss": 2.6169976890087128,
+      "validation_loss": 2.6048152446746826
+    }
+  ],
+  "scope": "synthetic_transformer_integration_only",
+  "teacher_parameters": 27264,
+  "trainable_student_parameters": 1408,
+  "initial_validation_kl": 8.730448246002197,
+  "final_validation_kl": 7.669833183288574,
+  "test_kl": 7.662529230117798,
+  "clinical_validation": false,
+  "pretrained_medical_model_used": false
+}

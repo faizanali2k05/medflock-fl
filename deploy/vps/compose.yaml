@@ -1,0 +1,106 @@
+name: medflock
+x-app: &app
+  image: ${MEDFLOCK_IMAGE:?Use tested commit image}
+  restart: unless-stopped
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 128
+  tmpfs: ["/tmp:size=64m", "/app/runtime:uid=10001,gid=10001,size=64m"]
+  environment: &environment
+    MEDFLOCK_ENV: production
+    MEDFLOCK_EMBEDDED_WORKER: "false"
+    MEDFLOCK_AUTH_REQUIRED: "true"
+    MEDFLOCK_COOKIE_SECURE: "true"
+    MEDFLOCK_API_KEY: ${MEDFLOCK_API_KEY:?Required}
+    MEDFLOCK_DATABASE_URL: postgresql+psycopg://medflock:${MEDFLOCK_DB_PASSWORD:?Required}@database:5432/medflock
+    MEDFLOCK_ALLOWED_HOSTS: 31.97.50.29,localhost,127.0.0.1
+    MEDFLOCK_ARTIFACTS: /app/artifacts
+    MEDFLOCK_LLM_URL: http://llm:8080
+    OPENBLAS_NUM_THREADS: "1"
+    OMP_NUM_THREADS: "1"
+    MKL_NUM_THREADS: "1"
+  volumes: [artifacts:/app/artifacts, "./data:/app/data:ro"]
+  networks: [application]
+  logging: &logging
+    driver: json-file
+    options: {max-size: "10m", max-file: "3"}
+  depends_on:
+    database: {condition: service_healthy}
+services:
+  api:
+    <<: *app
+    command: [uvicorn, medflock.api:app, --host, 0.0.0.0, --port, "8088", --workers, "1", --limit-concurrency, "16", --timeout-keep-alive, "5"]
+    ports: ["127.0.0.1:18088:8088"]
+    cpus: 0.35
+    mem_limit: 512m
+    memswap_limit: 512m
+  worker:
+    <<: *app
+    command: [python, -m, medflock.worker]
+    cpus: 0.35
+    mem_limit: 768m
+    memswap_limit: 768m
+    stop_grace_period: 75s
+    healthcheck: {disable: true}
+  database:
+    image: ${POSTGRES_IMAGE:-postgres:17.6-alpine}
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: medflock
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Required}
+      MEDFLOCK_DB_PASSWORD: ${MEDFLOCK_DB_PASSWORD:?Required}
+    volumes:
+      - database:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/10-medflock.sh:ro
+    networks: [application]
+    cpus: 0.2
+    mem_limit: 512m
+    memswap_limit: 512m
+    pids_limit: 128
+    logging: *logging
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U postgres -d medflock]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+  proxy:
+    image: ${NGINX_IMAGE:-nginx:1.28-alpine}
+    restart: unless-stopped
+    read_only: true
+    security_opt: [no-new-privileges:true]
+    ports: ["${MEDFLOCK_PUBLIC_PORT:-18443}:8443"]
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./tls:/etc/medflock/tls:ro
+    tmpfs: ["/var/cache/nginx:size=32m", "/var/run:size=1m", "/tmp:size=16m"]
+    networks: [application]
+    cpus: 0.1
+    mem_limit: 128m
+    memswap_limit: 128m
+    pids_limit: 64
+    logging: *logging
+    depends_on: [api]
+  llm:
+    image: ${LLAMA_IMAGE:-ghcr.io/ggml-org/llama.cpp:server-b10524}
+    profiles: [medgemma]
+    restart: unless-stopped
+    read_only: true
+    user: "10001:10001"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: ["/tmp:size=64m"]
+    command: ["-m", "/models/medgemma.gguf", "--host", "0.0.0.0", "--port", "8080", "--ctx-size", "8192", "--threads", "4", "--threads-batch", "4", "--parallel", "1", "--batch-size", "64", "--ubatch-size", "32", "--no-webui", "--alias", "medgemma"]
+    volumes: ["./models:/models:ro"]
+    networks: [application]
+    cpu_shares: 256
+    mem_limit: 8g
+    memswap_limit: 8g
+    pids_limit: 64
+    logging: *logging
+networks:
+  application:
+volumes:
+  artifacts:
+  database:

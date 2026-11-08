@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medflock
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: medflock
+  template:
+    metadata:
+      labels:
+        app: medflock
+    spec:
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: registry-credentials
+      terminationGracePeriodSeconds: 75
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: api
+          image: medflock
+          ports:
+            - name: http
+              containerPort: 8088
+          envFrom:
+            - secretRef:
+                name: medflock-config
+          env:
+            - name: MEDFLOCK_ENV
+              value: production
+            - name: MEDFLOCK_AUTH_REQUIRED
+              value: "true"
+            - name: MEDFLOCK_EMBEDDED_WORKER
+              value: "false"
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests: {cpu: 100m, memory: 256Mi}
+            limits: {cpu: "1", memory: 1Gi}
+          startupProbe:
+            httpGet:
+              path: /health/live
+              port: http
+              httpHeaders: [{name: Host, value: localhost}]
+            periodSeconds: 5
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: http
+              httpHeaders: [{name: Host, value: localhost}]
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: http
+              httpHeaders: [{name: Host, value: localhost}]
+            periodSeconds: 20
+          volumeMounts:
+            - {name: artifacts, mountPath: /app/artifacts}
+            - {name: runtime, mountPath: /app/runtime}
+            - {name: tmp, mountPath: /tmp}
+        - name: worker
+          image: medflock
+          command: [python, -m, medflock.worker]
+          envFrom:
+            - secretRef:
+                name: medflock-config
+          env:
+            - {name: MEDFLOCK_ENV, value: production}
+            - {name: MEDFLOCK_AUTH_REQUIRED, value: "true"}
+            - {name: MEDFLOCK_EMBEDDED_WORKER, value: "false"}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests: {cpu: 250m, memory: 512Mi}
+            limits: {cpu: "2", memory: 2Gi}
+          volumeMounts:
+            - {name: artifacts, mountPath: /app/artifacts}
+            - {name: runtime, mountPath: /app/runtime}
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - name: artifacts
+          persistentVolumeClaim: {claimName: artifacts}
+        - name: runtime
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}

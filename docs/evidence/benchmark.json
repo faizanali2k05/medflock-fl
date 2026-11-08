@@ -1,0 +1,1835 @@
+[
+  {
+    "run_id": "benchmark-iid-3-17",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "f7a9e99821c7b73f8ecee5672e51dabb139d8675d2f1a00082250e0d43f85945",
+    "config": {
+      "clients": 3,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 17,
+      "partition": "iid",
+      "attack": "none",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.49061326658322907,
+      "auprc": 0.2801331756604605,
+      "brier": 0.19652730363493193,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.3804755944931164,
+        "auprc": 0.23220666265175452,
+        "brier": 0.20818090739112705,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.6320400500625782,
+        "auprc": 0.41837552428157576,
+        "brier": 0.18959100815530452,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4780976220275344,
+        "auprc": 0.2710628316686321,
+        "brier": 0.2057481765132449,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.4993742177722153,
+      "auprc": 0.2862436337052538,
+      "brier": 0.19646276059686774,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 64,
+        "events": 20
+      },
+      {
+        "node": 2,
+        "count": 64,
+        "events": 20
+      },
+      {
+        "node": 3,
+        "count": 64,
+        "events": 12
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-iid-3-42",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "67ef8576c376a19937be0b4370e5e3bc07ea66fc885bfe6446bdb8974aa69205",
+    "config": {
+      "clients": 3,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 42,
+      "partition": "iid",
+      "attack": "none",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5344180225281602,
+      "auprc": 0.28725591854274657,
+      "brier": 0.19534154566214296,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.590738423028786,
+        "auprc": 0.5200982038147691,
+        "brier": 0.19097857647440125,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.574468085106383,
+        "auprc": 0.3306181141943805,
+        "brier": 0.19880159568501068,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.47434292866082606,
+        "auprc": 0.2588051704589108,
+        "brier": 0.20926587431652047,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5344180225281603,
+      "auprc": 0.2793102419794057,
+      "brier": 0.19527186665602325,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 64,
+        "events": 19
+      },
+      {
+        "node": 2,
+        "count": 64,
+        "events": 13
+      },
+      {
+        "node": 3,
+        "count": 64,
+        "events": 20
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-iid-3-81",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "cf585755cc31de5309489206ec16b07f2feddc7f15518fde42813a2a42b6e070",
+    "config": {
+      "clients": 3,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 81,
+      "partition": "iid",
+      "attack": "none",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5506883604505632,
+      "auprc": 0.3663585583524359,
+      "brier": 0.19425457131128698,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.46057571964956195,
+        "auprc": 0.2959293857904869,
+        "brier": 0.19762905577957526,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.7146433041301627,
+        "auprc": 0.4790125663156186,
+        "brier": 0.189738430720309,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5131414267834793,
+        "auprc": 0.3347651866022784,
+        "brier": 0.19931238781938448,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5469336670838548,
+      "auprc": 0.3704800179944905,
+      "brier": 0.19437057086185652,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "node": 2,
+        "count": 64,
+        "events": 15
+      },
+      {
+        "node": 3,
+        "count": 64,
+        "events": 20
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-label-5-17",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "f7a9e99821c7b73f8ecee5672e51dabb139d8675d2f1a00082250e0d43f85945",
+    "config": {
+      "clients": 5,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 17,
+      "partition": "label_skew",
+      "attack": "none",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.49061326658322907,
+      "auprc": 0.2801331756604605,
+      "brier": 0.19652730363493193,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.42803504380475593,
+        "auprc": 0.23530476127383354,
+        "brier": 0.25438515665896677,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4518147684605757,
+        "auprc": 0.24483305538959743,
+        "brier": 0.2542145418420162,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4230287859824781,
+        "auprc": 0.23535427602614434,
+        "brier": 0.25455339429374374,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3967459324155195,
+        "auprc": 0.22342321161020484,
+        "brier": 0.22706795270145347,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5807259073842304,
+        "auprc": 0.3745516261167264,
+        "brier": 0.6930920217770254,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.44806007509386736,
+      "auprc": 0.2530106831749043,
+      "brier": 0.19705563234769785,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 2,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 3,
+        "count": 38,
+        "events": 0
+      },
+      {
+        "node": 4,
+        "count": 38,
+        "events": 14
+      },
+      {
+        "node": 5,
+        "count": 38,
+        "events": 38
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-label-5-42",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "67ef8576c376a19937be0b4370e5e3bc07ea66fc885bfe6446bdb8974aa69205",
+    "config": {
+      "clients": 5,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 42,
+      "partition": "label_skew",
+      "attack": "none",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5344180225281602,
+      "auprc": 0.28725591854274657,
+      "brier": 0.19534154566214296,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.6032540675844806,
+        "auprc": 0.33971909660797595,
+        "brier": 0.24987066837833133,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5594493116395495,
+        "auprc": 0.29797752406774214,
+        "brier": 0.25087875165239615,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5682102628285357,
+        "auprc": 0.31536989057923814,
+        "brier": 0.2508081147917072,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4555694618272841,
+        "auprc": 0.32557241862713604,
+        "brier": 0.21817986958116148,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.43929912390488113,
+        "auprc": 0.28531199776835475,
+        "brier": 0.6897395704563631,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5456821026282853,
+      "auprc": 0.2795085583037755,
+      "brier": 0.19498486268996712,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 2,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 3,
+        "count": 38,
+        "events": 0
+      },
+      {
+        "node": 4,
+        "count": 38,
+        "events": 14
+      },
+      {
+        "node": 5,
+        "count": 38,
+        "events": 38
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-label-5-81",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "cf585755cc31de5309489206ec16b07f2feddc7f15518fde42813a2a42b6e070",
+    "config": {
+      "clients": 5,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 81,
+      "partition": "label_skew",
+      "attack": "none",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5506883604505632,
+      "auprc": 0.3663585583524359,
+      "brier": 0.19425457131128698,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.37922403003754696,
+        "auprc": 0.230654069208574,
+        "brier": 0.2536728894470329,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3992490613266583,
+        "auprc": 0.24281744359977941,
+        "brier": 0.2532301833108982,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3904881101376721,
+        "auprc": 0.23858829314184124,
+        "brier": 0.2538962162886872,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5344180225281602,
+        "auprc": 0.40271365627490396,
+        "brier": 0.21644990827997146,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.6483103879849812,
+        "auprc": 0.4624672025443889,
+        "brier": 0.6907208241608391,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5369211514392991,
+      "auprc": 0.3616059320746249,
+      "brier": 0.19542194971866034,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 2,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 3,
+        "count": 38,
+        "events": 0
+      },
+      {
+        "node": 4,
+        "count": 38,
+        "events": 14
+      },
+      {
+        "node": 5,
+        "count": 38,
+        "events": 38
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-attack-5-17",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "f7a9e99821c7b73f8ecee5672e51dabb139d8675d2f1a00082250e0d43f85945",
+    "config": {
+      "clients": 5,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 17,
+      "partition": "label_skew",
+      "attack": "sign_flip",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.49061326658322907,
+      "auprc": 0.2801331756604605,
+      "brier": 0.19652730363493193,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.42803504380475593,
+        "auprc": 0.23530476127383354,
+        "brier": 0.25438515665896677,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4518147684605757,
+        "auprc": 0.24483305538959743,
+        "brier": 0.2542145418420162,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4230287859824781,
+        "auprc": 0.23535427602614434,
+        "brier": 0.25455339429374374,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3967459324155195,
+        "auprc": 0.22342321161020484,
+        "brier": 0.22706795270145347,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5807259073842304,
+        "auprc": 0.3745516261167264,
+        "brier": 0.6930920217770254,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5,
+      "auprc": 0.265625,
+      "brier": 0.7343749999998628,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 2,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 3,
+        "count": 38,
+        "events": 0
+      },
+      {
+        "node": 4,
+        "count": 38,
+        "events": 14
+      },
+      {
+        "node": 5,
+        "count": 38,
+        "events": 38
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-attack-5-42",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "67ef8576c376a19937be0b4370e5e3bc07ea66fc885bfe6446bdb8974aa69205",
+    "config": {
+      "clients": 5,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 42,
+      "partition": "label_skew",
+      "attack": "sign_flip",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5344180225281602,
+      "auprc": 0.28725591854274657,
+      "brier": 0.19534154566214296,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.6032540675844806,
+        "auprc": 0.33971909660797595,
+        "brier": 0.24987066837833133,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5594493116395495,
+        "auprc": 0.29797752406774214,
+        "brier": 0.25087875165239615,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5682102628285357,
+        "auprc": 0.31536989057923814,
+        "brier": 0.2508081147917072,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4555694618272841,
+        "auprc": 0.32557241862713604,
+        "brier": 0.21817986958116148,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.43929912390488113,
+        "auprc": 0.28531199776835475,
+        "brier": 0.6897395704563631,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5,
+      "auprc": 0.265625,
+      "brier": 0.7343749999998628,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 2,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 3,
+        "count": 38,
+        "events": 0
+      },
+      {
+        "node": 4,
+        "count": 38,
+        "events": 14
+      },
+      {
+        "node": 5,
+        "count": 38,
+        "events": 38
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-attack-5-81",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "cf585755cc31de5309489206ec16b07f2feddc7f15518fde42813a2a42b6e070",
+    "config": {
+      "clients": 5,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 81,
+      "partition": "label_skew",
+      "attack": "sign_flip",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5506883604505632,
+      "auprc": 0.3663585583524359,
+      "brier": 0.19425457131128698,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.37922403003754696,
+        "auprc": 0.230654069208574,
+        "brier": 0.2536728894470329,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3992490613266583,
+        "auprc": 0.24281744359977941,
+        "brier": 0.2532301833108982,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3904881101376721,
+        "auprc": 0.23858829314184124,
+        "brier": 0.2538962162886872,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5344180225281602,
+        "auprc": 0.40271365627490396,
+        "brier": 0.21644990827997146,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.6483103879849812,
+        "auprc": 0.4624672025443889,
+        "brier": 0.6907208241608391,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5,
+      "auprc": 0.265625,
+      "brier": 0.7343749999998628,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 2,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 3,
+        "count": 38,
+        "events": 0
+      },
+      {
+        "node": 4,
+        "count": 38,
+        "events": 14
+      },
+      {
+        "node": 5,
+        "count": 38,
+        "events": 38
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-clipped-5-17",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "f7a9e99821c7b73f8ecee5672e51dabb139d8675d2f1a00082250e0d43f85945",
+    "config": {
+      "clients": 5,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 17,
+      "partition": "label_skew",
+      "attack": "sign_flip",
+      "defense": "clip",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.49061326658322907,
+      "auprc": 0.2801331756604605,
+      "brier": 0.19652730363493193,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.42803504380475593,
+        "auprc": 0.23530476127383354,
+        "brier": 0.25438515665896677,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4518147684605757,
+        "auprc": 0.24483305538959743,
+        "brier": 0.2542145418420162,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4230287859824781,
+        "auprc": 0.23535427602614434,
+        "brier": 0.25455339429374374,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3967459324155195,
+        "auprc": 0.22342321161020484,
+        "brier": 0.22706795270145347,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5807259073842304,
+        "auprc": 0.3745516261167264,
+        "brier": 0.6930920217770254,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.41301627033792243,
+      "auprc": 0.22964901711193303,
+      "brier": 0.21967084392546046,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 2,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 3,
+        "count": 38,
+        "events": 0
+      },
+      {
+        "node": 4,
+        "count": 38,
+        "events": 14
+      },
+      {
+        "node": 5,
+        "count": 38,
+        "events": 38
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-clipped-5-42",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "67ef8576c376a19937be0b4370e5e3bc07ea66fc885bfe6446bdb8974aa69205",
+    "config": {
+      "clients": 5,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 42,
+      "partition": "label_skew",
+      "attack": "sign_flip",
+      "defense": "clip",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5344180225281602,
+      "auprc": 0.28725591854274657,
+      "brier": 0.19534154566214296,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.6032540675844806,
+        "auprc": 0.33971909660797595,
+        "brier": 0.24987066837833133,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5594493116395495,
+        "auprc": 0.29797752406774214,
+        "brier": 0.25087875165239615,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5682102628285357,
+        "auprc": 0.31536989057923814,
+        "brier": 0.2508081147917072,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4555694618272841,
+        "auprc": 0.32557241862713604,
+        "brier": 0.21817986958116148,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.43929912390488113,
+        "auprc": 0.28531199776835475,
+        "brier": 0.6897395704563631,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.4005006257822278,
+      "auprc": 0.2749576173956235,
+      "brier": 0.22331886585911415,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 2,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 3,
+        "count": 38,
+        "events": 0
+      },
+      {
+        "node": 4,
+        "count": 38,
+        "events": 14
+      },
+      {
+        "node": 5,
+        "count": 38,
+        "events": 38
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-clipped-5-81",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "cf585755cc31de5309489206ec16b07f2feddc7f15518fde42813a2a42b6e070",
+    "config": {
+      "clients": 5,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 81,
+      "partition": "label_skew",
+      "attack": "sign_flip",
+      "defense": "clip",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5506883604505632,
+      "auprc": 0.3663585583524359,
+      "brier": 0.19425457131128698,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.37922403003754696,
+        "auprc": 0.230654069208574,
+        "brier": 0.2536728894470329,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3992490613266583,
+        "auprc": 0.24281744359977941,
+        "brier": 0.2532301833108982,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3904881101376721,
+        "auprc": 0.23858829314184124,
+        "brier": 0.2538962162886872,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5344180225281602,
+        "auprc": 0.40271365627490396,
+        "brier": 0.21644990827997146,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.6483103879849812,
+        "auprc": 0.4624672025443889,
+        "brier": 0.6907208241608391,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5556946182728411,
+      "auprc": 0.3889261968048269,
+      "brier": 0.21846779644598668,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 2,
+        "count": 39,
+        "events": 0
+      },
+      {
+        "node": 3,
+        "count": 38,
+        "events": 0
+      },
+      {
+        "node": 4,
+        "count": 38,
+        "events": 14
+      },
+      {
+        "node": 5,
+        "count": 38,
+        "events": 38
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-age-10-17",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "f7a9e99821c7b73f8ecee5672e51dabb139d8675d2f1a00082250e0d43f85945",
+    "config": {
+      "clients": 10,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 17,
+      "partition": "feature_skew",
+      "attack": "none",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.49061326658322907,
+      "auprc": 0.2801331756604605,
+      "brier": 0.19652730363493193,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.4530663329161452,
+        "auprc": 0.2738571923957582,
+        "brier": 0.21435010790063747,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.37672090112640805,
+        "auprc": 0.269443231419521,
+        "brier": 0.21840876141485704,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.47309136420525655,
+        "auprc": 0.27807236496996574,
+        "brier": 0.2346757899729152,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4430538172715895,
+        "auprc": 0.27673807874325684,
+        "brier": 0.22515893273960622,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5694618272841052,
+        "auprc": 0.3771279442809786,
+        "brier": 0.22249793028548243,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5319148936170213,
+        "auprc": 0.28167440500737617,
+        "brier": 0.21118371428685193,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4806007509386733,
+        "auprc": 0.27115756613793063,
+        "brier": 0.20789219362046388,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5969962453066333,
+        "auprc": 0.45510076980415626,
+        "brier": 0.26515990789893745,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5707133917396746,
+        "auprc": 0.40833017244222336,
+        "brier": 0.2031582899541647,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4430538172715895,
+        "auprc": 0.2698507288554285,
+        "brier": 0.23228690909130975,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.49687108886107634,
+      "auprc": 0.28241085956226714,
+      "brier": 0.19650772678507183,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 20,
+        "events": 4
+      },
+      {
+        "node": 2,
+        "count": 20,
+        "events": 5
+      },
+      {
+        "node": 3,
+        "count": 19,
+        "events": 1
+      },
+      {
+        "node": 4,
+        "count": 19,
+        "events": 3
+      },
+      {
+        "node": 5,
+        "count": 19,
+        "events": 8
+      },
+      {
+        "node": 6,
+        "count": 19,
+        "events": 3
+      },
+      {
+        "node": 7,
+        "count": 19,
+        "events": 4
+      },
+      {
+        "node": 8,
+        "count": 19,
+        "events": 10
+      },
+      {
+        "node": 9,
+        "count": 19,
+        "events": 6
+      },
+      {
+        "node": 10,
+        "count": 19,
+        "events": 8
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-age-10-42",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "67ef8576c376a19937be0b4370e5e3bc07ea66fc885bfe6446bdb8974aa69205",
+    "config": {
+      "clients": 10,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 42,
+      "partition": "feature_skew",
+      "attack": "none",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5344180225281602,
+      "auprc": 0.28725591854274657,
+      "brier": 0.19534154566214296,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.4342928660826033,
+        "auprc": 0.2846510814637355,
+        "brier": 0.2196705508722988,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5732165206508135,
+        "auprc": 0.3064838100384272,
+        "brier": 0.20214870056907175,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5356695869837296,
+        "auprc": 0.28300743959213964,
+        "brier": 0.20502799170204283,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5456821026282854,
+        "auprc": 0.31078096482616935,
+        "brier": 0.2360605470986668,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.45556946182728414,
+        "auprc": 0.29699384319332983,
+        "brier": 0.21604253995918526,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5869837296620776,
+        "auprc": 0.3134774402458027,
+        "brier": 0.22183993513039782,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.4755944931163955,
+        "auprc": 0.27714582639357943,
+        "brier": 0.21135717140362503,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.6483103879849812,
+        "auprc": 0.5763676866931888,
+        "brier": 0.18368070173059087,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.6357947434292865,
+        "auprc": 0.4748653332980151,
+        "brier": 0.19688925069364863,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5219023779724656,
+        "auprc": 0.3454939212222722,
+        "brier": 0.3754642158168491,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5444305381727159,
+      "auprc": 0.2830661526868957,
+      "brier": 0.1951181183120797,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 20,
+        "events": 4
+      },
+      {
+        "node": 2,
+        "count": 20,
+        "events": 4
+      },
+      {
+        "node": 3,
+        "count": 19,
+        "events": 5
+      },
+      {
+        "node": 4,
+        "count": 19,
+        "events": 1
+      },
+      {
+        "node": 5,
+        "count": 19,
+        "events": 6
+      },
+      {
+        "node": 6,
+        "count": 19,
+        "events": 2
+      },
+      {
+        "node": 7,
+        "count": 19,
+        "events": 6
+      },
+      {
+        "node": 8,
+        "count": 19,
+        "events": 5
+      },
+      {
+        "node": 9,
+        "count": 19,
+        "events": 7
+      },
+      {
+        "node": 10,
+        "count": 19,
+        "events": 12
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  },
+  {
+    "run_id": "benchmark-age-10-81",
+    "federation": "simulated_in_process",
+    "engine": "Flower 1.39.0 FedAvg array-record aggregation utility",
+    "clinical_status": "research_only",
+    "medication_status": "not_assessed",
+    "contract_hash": "6562c7e37bd5e8d920c8daac23ea6f65a08bc99dbd714b4780feee3bc1de5204",
+    "cohort": {
+      "source_rows": 299,
+      "duplicate_rows_removed": 0,
+      "early_censored_excluded": 43,
+      "eligible_rows": 256,
+      "events_90d": 69,
+      "source_sha256": "9c73cea7468ff5d517801ec050fe9993da5912fce4b56f296f8df3b38dd75912",
+      "train_count": 192,
+      "test_count": 64
+    },
+    "split_hash": "cf585755cc31de5309489206ec16b07f2feddc7f15518fde42813a2a42b6e070",
+    "config": {
+      "clients": 10,
+      "rounds": 20,
+      "local_epochs": 5,
+      "learning_rate": 0.1,
+      "seed": 81,
+      "partition": "feature_skew",
+      "attack": "none",
+      "defense": "none",
+      "clip_norm": 0.1
+    },
+    "centralized": {
+      "auroc": 0.5506883604505632,
+      "auprc": 0.3663585583524359,
+      "brier": 0.19425457131128698,
+      "count": 64,
+      "events": 17
+    },
+    "local_only": [
+      {
+        "auroc": 0.360450563204005,
+        "auprc": 0.22001501404309004,
+        "brier": 0.22997984305843602,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.3617021276595745,
+        "auprc": 0.21538171691023833,
+        "brier": 0.20728258020606777,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.6320400500625782,
+        "auprc": 0.4111927060179302,
+        "brier": 0.19202517569623462,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.35419274092615766,
+        "auprc": 0.26091276763525256,
+        "brier": 0.23082652669826023,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.5844806007509387,
+        "auprc": 0.3256825254177893,
+        "brier": 0.19706101168704554,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.33291614518147683,
+        "auprc": 0.25548847976918987,
+        "brier": 0.2172981949631838,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.6645807259073842,
+        "auprc": 0.39774002125488717,
+        "brier": 0.19216224057526438,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.49061326658322907,
+        "auprc": 0.2852316581065042,
+        "brier": 0.21204217954786037,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.6620775969962454,
+        "auprc": 0.44248035589598456,
+        "brier": 0.2238510175856925,
+        "count": 64,
+        "events": 17
+      },
+      {
+        "auroc": 0.7196495619524406,
+        "auprc": 0.46635195304993526,
+        "brier": 0.2686535126141147,
+        "count": 64,
+        "events": 17
+      }
+    ],
+    "fedavg": {
+      "auroc": 0.5481852315394243,
+      "auprc": 0.37280336189611935,
+      "brier": 0.1943878208954605,
+      "count": 64,
+      "events": 17
+    },
+    "partitions": [
+      {
+        "node": 1,
+        "count": 20,
+        "events": 2
+      },
+      {
+        "node": 2,
+        "count": 20,
+        "events": 5
+      },
+      {
+        "node": 3,
+        "count": 19,
+        "events": 4
+      },
+      {
+        "node": 4,
+        "count": 19,
+        "events": 2
+      },
+      {
+        "node": 5,
+        "count": 19,
+        "events": 5
+      },
+      {
+        "node": 6,
+        "count": 19,
+        "events": 5
+      },
+      {
+        "node": 7,
+        "count": 19,
+        "events": 6
+      },
+      {
+        "node": 8,
+        "count": 19,
+        "events": 5
+      },
+      {
+        "node": 9,
+        "count": 19,
+        "events": 8
+      },
+      {
+        "node": 10,
+        "count": 19,
+        "events": 10
+      }
+    ],
+    "limitations": [
+      "Repeated holdout inspection makes this a development benchmark",
+      "Early-censoring exclusions may bias estimates",
+      "No confidence interval or external clinical validation",
+      "Local baselines use the same pooled holdout, not site-specific test sets",
+      "Sign-flip experiment is one synthetic attacker, not poisoning detection"
+    ]
+  }
+]

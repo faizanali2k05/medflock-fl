@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: medflock
+resources: [namespace.yaml, workload.yaml, service.yaml, storage.yaml]
+images:
+  - name: medflock
+    newName: registry.gitlab.com/mashhood0x7e-group/medflock-fl
+    newTag: SET_COMMIT_SHA

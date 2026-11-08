@@ -1,0 +1,504 @@
+{
+  "pipeline": 2,
+  "federation": "simulated_in_process",
+  "runs": [
+    {
+      "config": {
+        "dataset_id": "default",
+        "family": "logistic",
+        "hidden": 16,
+        "clients": 3,
+        "rounds": 60,
+        "local_epochs": 5,
+        "learning_rate": 0.15,
+        "l2": 0.01,
+        "seed": 17,
+        "partition": "iid",
+        "aggregation": "fedavg",
+        "attack": "none",
+        "defense": "none",
+        "clip_norm": 1,
+        "patience": 12,
+        "parent_model": null
+      },
+      "cohort": {
+        "source_rows": 299,
+        "eligible_rows": 256,
+        "duplicate_rows_removed": 0,
+        "early_censored_excluded": 43,
+        "positive_outcomes": 69,
+        "features": 11,
+        "missing_values": 0,
+        "has_patient_groups": false,
+        "train_count": 153,
+        "validation_count": 51,
+        "test_count": 52
+      },
+      "centralized": {
+        "auroc": 0.768796992481203,
+        "auprc": 0.5130109415561096,
+        "brier": 0.17398225251626748,
+        "log_loss": 0.5269503165439676,
+        "count": 52,
+        "events": 14
+      },
+      "local_only": [
+        {
+          "auroc": 0.4718045112781955,
+          "auprc": 0.25923760388295414,
+          "brier": 0.23208817682151,
+          "log_loss": 0.6563997101039342,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.674812030075188,
+          "auprc": 0.443709685142056,
+          "brier": 0.19539246022346926,
+          "log_loss": 0.5785037810626866,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.8045112781954887,
+          "auprc": 0.7285074001369048,
+          "brier": 0.1498433049507065,
+          "log_loss": 0.4766134696095973,
+          "count": 52,
+          "events": 14
+        }
+      ],
+      "fedavg": {
+        "auroc": 0.7593984962406015,
+        "auprc": 0.5019324044100258,
+        "brier": 0.17394009316115683,
+        "log_loss": 0.5268617355064035,
+        "count": 52,
+        "events": 14
+      },
+      "selected_round": 13,
+      "split_hash": "ee9348c0f0265475b5804df6dccc43ab344e2d0da71ed5fb24c8b01de2b43e47",
+      "limitations": [
+        "Public-data simulation; not independent hospital validation",
+        "Preprocessing fitted on pooled training data for this benchmark",
+        "Repeated test inspection is development, not external validation",
+        "No warm-start used"
+      ]
+    },
+    {
+      "config": {
+        "dataset_id": "default",
+        "family": "logistic",
+        "hidden": 16,
+        "clients": 3,
+        "rounds": 60,
+        "local_epochs": 5,
+        "learning_rate": 0.15,
+        "l2": 0.01,
+        "seed": 42,
+        "partition": "iid",
+        "aggregation": "fedavg",
+        "attack": "none",
+        "defense": "none",
+        "clip_norm": 1,
+        "patience": 12,
+        "parent_model": null
+      },
+      "cohort": {
+        "source_rows": 299,
+        "eligible_rows": 256,
+        "duplicate_rows_removed": 0,
+        "early_censored_excluded": 43,
+        "positive_outcomes": 69,
+        "features": 11,
+        "missing_values": 0,
+        "has_patient_groups": false,
+        "train_count": 153,
+        "validation_count": 51,
+        "test_count": 52
+      },
+      "centralized": {
+        "auroc": 0.7067669172932332,
+        "auprc": 0.4350130210412565,
+        "brier": 0.17911492316654753,
+        "log_loss": 0.5354933819063377,
+        "count": 52,
+        "events": 14
+      },
+      "local_only": [
+        {
+          "auroc": 0.6278195488721804,
+          "auprc": 0.40144695493747473,
+          "brier": 0.19629830647082436,
+          "log_loss": 0.5796130664641012,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.6860902255639098,
+          "auprc": 0.4279937453592993,
+          "brier": 0.18649204953658838,
+          "log_loss": 0.5578215216014075,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.6052631578947368,
+          "auprc": 0.35972675851980207,
+          "brier": 0.23635169323651747,
+          "log_loss": 0.7734881075265044,
+          "count": 52,
+          "events": 14
+        }
+      ],
+      "fedavg": {
+        "auroc": 0.6973684210526316,
+        "auprc": 0.43247920625740166,
+        "brier": 0.18019478527423854,
+        "log_loss": 0.538691383724657,
+        "count": 52,
+        "events": 14
+      },
+      "selected_round": 11,
+      "split_hash": "fa62e8bf88e02bb88a555a811c47a0aa9cc0b8acee48dbf221f533fa5503f5df",
+      "limitations": [
+        "Public-data simulation; not independent hospital validation",
+        "Preprocessing fitted on pooled training data for this benchmark",
+        "Repeated test inspection is development, not external validation",
+        "No warm-start used"
+      ]
+    },
+    {
+      "config": {
+        "dataset_id": "default",
+        "family": "logistic",
+        "hidden": 16,
+        "clients": 3,
+        "rounds": 60,
+        "local_epochs": 5,
+        "learning_rate": 0.15,
+        "l2": 0.01,
+        "seed": 73,
+        "partition": "iid",
+        "aggregation": "fedavg",
+        "attack": "none",
+        "defense": "none",
+        "clip_norm": 1,
+        "patience": 12,
+        "parent_model": null
+      },
+      "cohort": {
+        "source_rows": 299,
+        "eligible_rows": 256,
+        "duplicate_rows_removed": 0,
+        "early_censored_excluded": 43,
+        "positive_outcomes": 69,
+        "features": 11,
+        "missing_values": 0,
+        "has_patient_groups": false,
+        "train_count": 153,
+        "validation_count": 51,
+        "test_count": 52
+      },
+      "centralized": {
+        "auroc": 0.6541353383458647,
+        "auprc": 0.5368016921254576,
+        "brier": 0.18214010683325427,
+        "log_loss": 0.5481761728827808,
+        "count": 52,
+        "events": 14
+      },
+      "local_only": [
+        {
+          "auroc": 0.5902255639097744,
+          "auprc": 0.5344092432609162,
+          "brier": 0.2037641073859818,
+          "log_loss": 0.6482713744604602,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.6672932330827068,
+          "auprc": 0.549675804300305,
+          "brier": 0.17446622371255183,
+          "log_loss": 0.5318120962231867,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.5902255639097744,
+          "auprc": 0.45425088019397475,
+          "brier": 0.19954655862472806,
+          "log_loss": 0.5841003611463413,
+          "count": 52,
+          "events": 14
+        }
+      ],
+      "fedavg": {
+        "auroc": 0.6484962406015037,
+        "auprc": 0.5334845009432344,
+        "brier": 0.18085666411155682,
+        "log_loss": 0.5453033760191132,
+        "count": 52,
+        "events": 14
+      },
+      "selected_round": 8,
+      "split_hash": "17f7b079aec578b921b661cf6bfda0a345c6b47b448e4aa94c22a7519aa04815",
+      "limitations": [
+        "Public-data simulation; not independent hospital validation",
+        "Preprocessing fitted on pooled training data for this benchmark",
+        "Repeated test inspection is development, not external validation",
+        "No warm-start used"
+      ]
+    },
+    {
+      "config": {
+        "dataset_id": "default",
+        "family": "mlp",
+        "hidden": 16,
+        "clients": 3,
+        "rounds": 60,
+        "local_epochs": 5,
+        "learning_rate": 0.15,
+        "l2": 0.01,
+        "seed": 17,
+        "partition": "iid",
+        "aggregation": "fedavg",
+        "attack": "none",
+        "defense": "none",
+        "clip_norm": 1,
+        "patience": 12,
+        "parent_model": null
+      },
+      "cohort": {
+        "source_rows": 299,
+        "eligible_rows": 256,
+        "duplicate_rows_removed": 0,
+        "early_censored_excluded": 43,
+        "positive_outcomes": 69,
+        "features": 11,
+        "missing_values": 0,
+        "has_patient_groups": false,
+        "train_count": 153,
+        "validation_count": 51,
+        "test_count": 52
+      },
+      "centralized": {
+        "auroc": 0.768796992481203,
+        "auprc": 0.5444578649190438,
+        "brier": 0.17164741104347242,
+        "log_loss": 0.5194978388486736,
+        "count": 52,
+        "events": 14
+      },
+      "local_only": [
+        {
+          "auroc": 0.5394736842105263,
+          "auprc": 0.3022838937278334,
+          "brier": 0.2047781612343497,
+          "log_loss": 0.5964806373020108,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.6484962406015037,
+          "auprc": 0.4397592905759381,
+          "brier": 0.1887028960972423,
+          "log_loss": 0.5621715613865605,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.7951127819548872,
+          "auprc": 0.720408163265306,
+          "brier": 0.16214025925582104,
+          "log_loss": 0.5023681999414048,
+          "count": 52,
+          "events": 14
+        }
+      ],
+      "fedavg": {
+        "auroc": 0.7612781954887218,
+        "auprc": 0.5407017102139053,
+        "brier": 0.17197069788961009,
+        "log_loss": 0.52063069664442,
+        "count": 52,
+        "events": 14
+      },
+      "selected_round": 14,
+      "split_hash": "ee9348c0f0265475b5804df6dccc43ab344e2d0da71ed5fb24c8b01de2b43e47",
+      "limitations": [
+        "Public-data simulation; not independent hospital validation",
+        "Preprocessing fitted on pooled training data for this benchmark",
+        "Repeated test inspection is development, not external validation",
+        "No warm-start used"
+      ]
+    },
+    {
+      "config": {
+        "dataset_id": "default",
+        "family": "mlp",
+        "hidden": 16,
+        "clients": 3,
+        "rounds": 60,
+        "local_epochs": 5,
+        "learning_rate": 0.15,
+        "l2": 0.01,
+        "seed": 42,
+        "partition": "iid",
+        "aggregation": "fedavg",
+        "attack": "none",
+        "defense": "none",
+        "clip_norm": 1,
+        "patience": 12,
+        "parent_model": null
+      },
+      "cohort": {
+        "source_rows": 299,
+        "eligible_rows": 256,
+        "duplicate_rows_removed": 0,
+        "early_censored_excluded": 43,
+        "positive_outcomes": 69,
+        "features": 11,
+        "missing_values": 0,
+        "has_patient_groups": false,
+        "train_count": 153,
+        "validation_count": 51,
+        "test_count": 52
+      },
+      "centralized": {
+        "auroc": 0.7105263157894737,
+        "auprc": 0.5006549788630172,
+        "brier": 0.17673954117938187,
+        "log_loss": 0.5308760308160259,
+        "count": 52,
+        "events": 14
+      },
+      "local_only": [
+        {
+          "auroc": 0.5939849624060151,
+          "auprc": 0.4396962052456379,
+          "brier": 0.1912229408566386,
+          "log_loss": 0.5699143897709347,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.6917293233082706,
+          "auprc": 0.48767069523243944,
+          "brier": 0.18514086575648733,
+          "log_loss": 0.5534022675711326,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.6127819548872181,
+          "auprc": 0.3658597921528357,
+          "brier": 0.2423517384748931,
+          "log_loss": 0.7836816712799408,
+          "count": 52,
+          "events": 14
+        }
+      ],
+      "fedavg": {
+        "auroc": 0.7086466165413534,
+        "auprc": 0.4966867248947633,
+        "brier": 0.17723090593006768,
+        "log_loss": 0.5324667435423431,
+        "count": 52,
+        "events": 14
+      },
+      "selected_round": 19,
+      "split_hash": "fa62e8bf88e02bb88a555a811c47a0aa9cc0b8acee48dbf221f533fa5503f5df",
+      "limitations": [
+        "Public-data simulation; not independent hospital validation",
+        "Preprocessing fitted on pooled training data for this benchmark",
+        "Repeated test inspection is development, not external validation",
+        "No warm-start used"
+      ]
+    },
+    {
+      "config": {
+        "dataset_id": "default",
+        "family": "mlp",
+        "hidden": 16,
+        "clients": 3,
+        "rounds": 60,
+        "local_epochs": 5,
+        "learning_rate": 0.15,
+        "l2": 0.01,
+        "seed": 73,
+        "partition": "iid",
+        "aggregation": "fedavg",
+        "attack": "none",
+        "defense": "none",
+        "clip_norm": 1,
+        "patience": 12,
+        "parent_model": null
+      },
+      "cohort": {
+        "source_rows": 299,
+        "eligible_rows": 256,
+        "duplicate_rows_removed": 0,
+        "early_censored_excluded": 43,
+        "positive_outcomes": 69,
+        "features": 11,
+        "missing_values": 0,
+        "has_patient_groups": false,
+        "train_count": 153,
+        "validation_count": 51,
+        "test_count": 52
+      },
+      "centralized": {
+        "auroc": 0.6165413533834586,
+        "auprc": 0.4911576192100334,
+        "brier": 0.18127397312643295,
+        "log_loss": 0.5488936154865397,
+        "count": 52,
+        "events": 14
+      },
+      "local_only": [
+        {
+          "auroc": 0.5469924812030076,
+          "auprc": 0.4776769758490955,
+          "brier": 0.20809886556976395,
+          "log_loss": 0.6075319982362342,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.6484962406015037,
+          "auprc": 0.546734438026731,
+          "brier": 0.18348762844301156,
+          "log_loss": 0.5520840393063402,
+          "count": 52,
+          "events": 14
+        },
+        {
+          "auroc": 0.5488721804511278,
+          "auprc": 0.44733329993781534,
+          "brier": 0.19192598572289063,
+          "log_loss": 0.5727284731720653,
+          "count": 52,
+          "events": 14
+        }
+      ],
+      "fedavg": {
+        "auroc": 0.6165413533834586,
+        "auprc": 0.4911576192100334,
+        "brier": 0.1812217196101445,
+        "log_loss": 0.5488269415181567,
+        "count": 52,
+        "events": 14
+      },
+      "selected_round": 8,
+      "split_hash": "17f7b079aec578b921b661cf6bfda0a345c6b47b448e4aa94c22a7519aa04815",
+      "limitations": [
+        "Public-data simulation; not independent hospital validation",
+        "Preprocessing fitted on pooled training data for this benchmark",
+        "Repeated test inspection is development, not external validation",
+        "No warm-start used"
+      ]
+    }
+  ]
+}

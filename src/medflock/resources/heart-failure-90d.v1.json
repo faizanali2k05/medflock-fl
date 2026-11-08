@@ -1,0 +1,25 @@
+{
+  "id": "heart-failure-90d",
+  "version": 1,
+  "model_family": "binary_logistic_fixed_scale_bias_v1",
+  "feature_scales": [100, 1, 1000, 1, 100, 1, 500000, 5, 150, 1, 1],
+  "feature_units": {
+    "age": "years", "anaemia": "source binary 0/1",
+    "creatinine_phosphokinase": "mcg/L as stated by UCI",
+    "diabetes": "source binary 0/1", "ejection_fraction": "percent",
+    "high_blood_pressure": "source binary 0/1", "platelets": "kiloplatelets/mL",
+    "serum_creatinine": "mg/dL", "serum_sodium": "mEq/L",
+    "sex": "source binary 0/1; mapping must be verified for new sources",
+    "smoking": "source binary 0/1"
+  },
+  "unit_source": "https://archive.ics.uci.edu/dataset/519/heart+failure+clinical+records",
+  "population": "Adults already diagnosed with heart failure in the UCI 519 cohort",
+  "target": "Observed death within 90 days of baseline",
+  "horizon_days": 90,
+  "censoring": "Exclude survivors last observed before day 90; retain deaths before day 90 and all observations at or beyond day 90",
+  "features": ["age", "anaemia", "creatinine_phosphokinase", "diabetes", "ejection_fraction", "high_blood_pressure", "platelets", "serum_creatinine", "serum_sodium", "sex", "smoking"],
+  "forbidden_predictors": ["time", "DEATH_EVENT"],
+  "normalization": "Fixed engineering scales, no fitted population statistics; values clipped to [-10,10] after scaling",
+  "status": "research_only",
+  "limitations": ["Small historical cohort", "Early-censoring exclusion can introduce selection bias", "No external validation", "No calibrated individual clinical risk claim", "Not a heart-disease diagnostic or prescription model", "No verified hospital labels; all client partitions are simulated"]
+}

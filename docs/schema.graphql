@@ -1,0 +1,67 @@
+type Activity {
+  sequence: Int!
+  eventId: String!
+  createdAt: String!
+  kind: String!
+  details: JSON!
+}
+
+type Dataset {
+  id: String!
+  name: String!
+  createdAt: String!
+  sha256: String!
+  contract: JSON!
+  profile: JSON!
+  provenance: JSON!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](https://ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf).
+"""
+scalar JSON @specifiedBy(url: "https://ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf")
+
+type Model {
+  id: String!
+  runId: String!
+  status: String!
+  manifest: JSON!
+}
+
+type Mutation {
+  startRun(config: JSON!, requestKey: String!): Run!
+  cancelRun(id: String!): Boolean!
+  registerNode(id: String!, label: String!): Node!
+  setNodeStatus(id: String!, status: String!): Node!
+  activateModel(id: String!, reason: String!): Model!
+  predict(modelId: String!, features: JSON!): JSON!
+}
+
+type Node {
+  id: String!
+  label: String!
+  status: String!
+  kind: String!
+  lastSeen: String
+  details: JSON!
+}
+
+type Query {
+  activityCursor: Int!
+  runs(limit: Int! = 30): [Run!]!
+  run(id: String!): Run
+  datasets: [Dataset!]!
+  nodes: [Node!]!
+  models: [Model!]!
+  activity(after: Int! = 0, limit: Int! = 100): [Activity!]!
+  defaultContract: JSON!
+}
+
+type Run {
+  id: String!
+  status: String!
+  createdAt: String!
+  config: JSON!
+  result: JSON
+  error: String
+}

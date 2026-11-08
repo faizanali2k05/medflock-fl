@@ -1,0 +1,33 @@
+{
+  "draft_cases": 300,
+  "scenario_families": 60,
+  "independent_clinical_cases": 0,
+  "reviewed_cases": 0,
+  "splits": {
+    "train": 160,
+    "validation": 65,
+    "test": 75
+  },
+  "family_splits": {
+    "train": 32,
+    "validation": 13,
+    "test": 15
+  },
+  "statuses": {
+    "NEEDS_INFORMATION": 190,
+    "URGENT_REVIEW": 10,
+    "OUT_OF_SCOPE": 15,
+    "VALIDATION_FAILED": 15,
+    "DRAFT_FOR_REVIEW": 70
+  },
+  "unique_prompts": 300,
+  "unique_responses": 300,
+  "corpus_sha256": "7f62bdc263d5a7433af21d1b765dc506179bf1c0ab7a468ff9148cd32aa605aa",
+  "train_ready": false,
+  "limits": [
+    "Unreviewed synthetic drafts",
+    "No validated dose/order targets",
+    "Context variants share a family",
+    "Not an independent clinical benchmark"
+  ]
+}
